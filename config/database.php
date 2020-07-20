@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'sqlsrv'),
+    'default' => env('DB_CONNECTION'),
 
     /*
     |--------------------------------------------------------------------------
@@ -81,11 +81,11 @@ return [
         'sqlsrv' => [
             'driver' => 'sqlsrv',
             'url' => env('lade.database.windows.net'),
-            'host' => env('DB_HOST', 'lade.database.windows.net'),
-            'port' => env('DB_PORT', '1433'),
-            'database' => env('DB_DATABASE', 'LADE'),
-            'username' => env('DB_USERNAME', 'UserLade'),
-            'password' => env('DB_PASSWORD', '1234.Lade'),
+            'host' => env('DB_HOST'),
+            'port' => env('DB_PORT'),
+            'database' => env('DB_DATABASE'),
+            'username' => env('DB_USERNAME'),
+            'password' => env('DB_PASSWORD'),
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
