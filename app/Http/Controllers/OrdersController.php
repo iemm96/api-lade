@@ -2,22 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use App\Products;
+use App\Orders;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class ProductsController extends Controller
+class OrdersController extends Controller
 {
 
-    public function getProducts($conExistencia,$descripcion,$clase,$lugar) {
-        $result = DB::select("exec getProducts {$conExistencia},'{$descripcion}','{$clase}','{$lugar}'");
+    /**
+     * @param $email
+     * @param $numeroPedido
+     * @param $status
+     * @param $anio
+     * @param $mes
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getOrders($email,$numeroPedido,$status,$anio,$mes) {
+        $result = DB::select("exec getorders '{$email}',{$numeroPedido},'{$status}','{$anio}','{$mes}'");
         return response()->json($result);
     }
 
-    public function getProductsOrder($numeroPedido) {
-        $result = DB::select("exec getProductsOrder '{$numeroPedido}'");
+    public function getOrderDetail($numeroPedido) {
+        $result = DB::select("exec getorderdetail '{$numeroPedido}'");
         return response()->json($result);
     }
+
 
     /**
      * Display a listing of the resource.
@@ -26,21 +35,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $result = DB::select('SELECT GETDATE() ');
-
-        $result = [
-            'clave' => '',
-            'clase' => '',
-            'descripcion' => '',
-            'unidadMedida' => '',
-            'precio' => '',
-            'lugar' => '',
-            'existencia' => '',
-            'fechaUltimaModificacion' => '',
-        ];
-
-        return response()->json($result);
-        //DB::select('exec my_stored_procedure(?,?,..)',array($Param1,$param2));
+        //
     }
 
     /**
@@ -67,10 +62,10 @@ class ProductsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Products  $products
+     * @param  \App\Orders  $orders
      * @return \Illuminate\Http\Response
      */
-    public function show(Products $products)
+    public function show(Orders $orders)
     {
         //
     }
@@ -78,10 +73,10 @@ class ProductsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Products  $products
+     * @param  \App\Orders  $orders
      * @return \Illuminate\Http\Response
      */
-    public function edit(Products $products)
+    public function edit(Orders $orders)
     {
         //
     }
@@ -90,10 +85,10 @@ class ProductsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Products  $products
+     * @param  \App\Orders  $orders
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Products $products)
+    public function update(Request $request, Orders $orders)
     {
         //
     }
@@ -101,10 +96,10 @@ class ProductsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Products  $products
+     * @param  \App\Orders  $orders
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Products $products)
+    public function destroy(Orders $orders)
     {
         //
     }

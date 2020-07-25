@@ -22,4 +22,10 @@ Route::group(['middleware' => ['auth:api']],function() {
 
 });
 
-Route::get('products/getProducts', 'ProductsController@getProducts');
+Route::get('products/getProducts/{conExistencia}/{descripcion}/{clase}/{lugar}', 'ProductsController@getProducts');
+Route::get('products/getProductsOrder/{numeroPedido}', 'ProductsController@getProductsOrder');
+
+Route::get('orders/getOrders/{email}/{numeroPedido}/{status}/{anio}/{mes}', 'OrdersController@getOrders');
+Route::get('orders/getOrderDetail/{numeroPedido}', 'OrdersController@getOrderDetail');
+
+Route::post('login','LoginController@login');
