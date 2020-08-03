@@ -8,13 +8,10 @@ use Illuminate\Support\Facades\DB;
 
 class OrdersController extends Controller
 {
-
-
     public function getOrders(Request $request) {
 
         if(!$request->route('email')) {
-            return response()->json('Error "correoAgente" es requerido');
-
+            return response()->json('Error "email" es requerido');
         }
 
         $result = DB::select("exec getorders 

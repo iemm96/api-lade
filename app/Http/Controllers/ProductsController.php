@@ -11,10 +11,6 @@ class ProductsController extends Controller
 
     public function getProducts(Request $request) {
 
-        if(!$request->route('conExistencia')) {
-            return response()->json('Error "conExistencia" es requerido');
-        }
-
         $result = DB::select("exec getProducts 
         {$request->route('conExistencia')},'{$request->route('descripcion')}',
         '{$request->route('clase')}','{$request->route('lugar')}'");
