@@ -12,7 +12,7 @@ class OrdersController extends Controller
 
     public function getOrders(Request $request) {
 
-        if(!$request->route('correoAgente')) {
+        if(!$request->route('email')) {
             return response()->json('Error "correoAgente" es requerido');
 
         }
