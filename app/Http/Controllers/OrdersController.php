@@ -9,21 +9,26 @@ use Illuminate\Support\Facades\DB;
 class OrdersController extends Controller
 {
 
-    /**
-     * @param $email
-     * @param $numeroPedido
-     * @param $status
-     * @param $anio
-     * @param $mes
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function getOrders($email,$numeroPedido,$status,$anio,$mes) {
-        $result = DB::select("exec getorders '{$email}',{$numeroPedido},'{$status}','{$anio}','{$mes}'");
+
+    public function getOrders(Request $request) {
+
+        if(!$request->route('correoAgente')) {
+            return response()->json('Error "correoAgente" es requerido');
+
+        }
+
+        $result = DB::select("exec getorders 
+        '{$request->route('email')}','{$request->route('numeroPedido')}','{$request->route('status')}','{$request->route('anio')}','{$request->route('mes')}'");
         return response()->json($result);
     }
 
-    public function getOrderDetail($numeroPedido) {
-        $result = DB::select("exec getorderdetail '{$numeroPedido}'");
+    public function getOrderDetail(Request $request) {
+
+        if(!$request->route('numeroPedido')) {
+            return response()->json('Error "numeroPedido" es requerido');
+        }
+
+        $result = DB::select("exec getorderdetail '{$request->route('numeroPedido')}'");
         return response()->json($result);
     }
 

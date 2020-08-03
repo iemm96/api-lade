@@ -12,6 +12,7 @@
         "fideloper/proxy": "^4.0",
         "kreait/laravel-firebase": "^2.2",
         "laravel/framework": "^6.0",
+        "laravel/passport": "^9.3",
         "laravel/tinker": "^1.0",
         "nesbot/carbon": "^2.36"
     },
