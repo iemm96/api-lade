@@ -83,7 +83,7 @@ Existen 4 controladores clave en el proyecto estos son:
 
 ##Autentificación
 
-El proceso de autentificación lo prove [Firebase](https://firebase.google.com/docs/auth/web/firebaseui) de Google por medio de un [SDK](https://github.com/kreait/laravel-firebase) para Laravel.
+El proceso de autentificación lo provee [Firebase](https://firebase.google.com/docs/auth/web/firebaseui) de Google por medio de un [SDK](https://github.com/kreait/laravel-firebase) para Laravel.
 
 El proceso de autentificación se define en la siguiente imágen:
 
@@ -243,4 +243,13 @@ Ejemplo del archivo:
   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/fireba*******************74.iam.gserviceaccount.com"
 }
 
+```
+
+Nota: Revisar que el archivo *.env* del proyecto contenga la ruta
+del archivo anteriormente creado, esta ruta debe quedar como en el siguiente ejemplo:
+
+```
+...
+FIREBASE_CREDENTIALS=firebase_credentials.json
+...
 ```
