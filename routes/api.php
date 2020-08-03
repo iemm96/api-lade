@@ -21,13 +21,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['middleware' => ['auth:api']],function() {
 
     //Ruta para obtener los productos por parámetros
-    Route::get('products/getProducts/{conExistencia}/{descripcion?}/{clase?}/{lugar?}', 'ProductsController@getProducts');
+    Route::get('products/getProducts/{conExistencia}', 'ProductsController@getProducts');
 
     //Ruta para obtener la orden de un producto por número de pedido
     Route::get('products/getProductsOrder/{numeroPedido}', 'ProductsController@getProductsOrder');
 
     //Ruta para obtener las órdenes por email del vendedor
-    Route::get('orders/getOrders/{email}/{numeroPedido?}/{status?}/{anio?}/{mes?}', 'OrdersController@getOrders');
+    Route::get('orders/getOrders/{email}', 'OrdersController@getOrders');
 
     //Ruta para obtener el detalle de la orden por número de pedido
     Route::get('orders/getOrderDetail/{numeroPedido}', 'OrdersController@getOrderDetail');

@@ -20,17 +20,11 @@ Route::group(['middleware' => ['auth:api']],function() {
 });
 ...
 ```
-Las rutas reciben parámetros que pueden ser o no opcionales.
-
-Un parámetro opcional se define con *?* al final de su nombre quedando como: *nombreParametro?*
 
 ####Rutas Protegidas
 
 * Ruta para obtener los productos por parámetros
     * conExistencia (Obligatorio)
-    * descripcion (Opcional)
-    * clase (Opcional)
-    * lugar (Opcional)
 ```
 ...
     Route::get('products/getProducts/{conExistencia}/{descripcion?}/{clase?}/{lugar?}', 'ProductsController@getProducts');
@@ -46,10 +40,6 @@ Un parámetro opcional se define con *?* al final de su nombre quedando como: *n
 
 * Ruta para obtener las órdenes por email del vendedor
     * email (Obligatorio)
-    * numeroPedido (Opcional)
-    * status (Opcional)
-    * anio (Opcional)
-    * mes (Opcional)
 ```
 ...
     Route::get('orders/getOrders/{email}/{numeroPedido?}/{status?}/{anio?}/{mes?}', 'OrdersController@getOrders');
@@ -77,10 +67,11 @@ La ruta sin seguridad corresponde a */login* esta ruta se encarga de recibir el 
 
 ##Controladores
 
-Existen 3 controladores clave en el proyecto estos son:
-* ProductsController - Se encarga de atender las peticiones realizadas por la url */products*
-* OrdersController - Se encarga de atender las peticiones realizadas por la url */orders*
+Existen 4 controladores clave en el proyecto estos son:
+* ClientsController - Se encarga de atender las peticiones realizadas por la url */clients*
 * LoginController - Se encarga de atender las peticiones realizadas por la url */login*
+* OrdersController - Se encarga de atender las peticiones realizadas por la url */orders*
+* ProductsController - Se encarga de atender las peticiones realizadas por la url */products*
 
 ##Autentificación
 
@@ -112,7 +103,9 @@ axios.post(`${api_url}/api/login`,post).then((response) => {
 })
 ```
 
-para que luego se envíe mediante una petición a Laravel.
+Para que luego se envíe mediante una petición a Laravel.
+
+*Notar que ```${api_url}``` corresponde a la url de la API del servidor en producción o en Dev.
 
 Laravel a su vez confirma que el token pertenece a un cliente de Firebase que busca en la Base de Datos de SQL Server.
 
@@ -160,7 +153,7 @@ Ejemplo de respuesta exitosa si se específica el token como header de 'Authoriz
 ]
 ```
 
-##Ejemplos de peticiones
+##Ejemplo de petición
 
 Método get: */api/products/getProductsOrder/12345*
 
@@ -210,23 +203,6 @@ Regresa:
   }
 ]
 
-```
-
-Método get: *api/orders/getOrders/correo@correo/12345/Surtido/2020/03*
-
-```
-[
-
-    {
-        "numeroPedido": "12345",
-        "fechaAlta": "2020-03-24",
-        "mes": "03",
-        "anio": "2020",
-        "HORA_PED": "13:58:22",
-        "estatus": "Surtido"
-    }
-
-]
 ```
 
 ##La tabla Users
