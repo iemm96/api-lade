@@ -54,6 +54,14 @@ Route::group(['middleware' => ['auth:api']],function() {
 ...
 ```
 
+* Ruta para obtener el detalle de los clientes
+   
+```
+...
+    Route::get('clients/getClients', 'ClientsController@getClients');
+...
+```
+
 ####Rutas sin seguridad:
 
 En el proyecto existe una ruta sin seguridad, pero puede haber múltiples, estás se definen fuera del bloque de código visto en la sección anterior.
