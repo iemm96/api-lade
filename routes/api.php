@@ -34,7 +34,12 @@ Route::group(['middleware' => ['auth:api']],function() {
 
     //Ruta para obtener el detalle de los clientes
     Route::get('clients/getClients', 'ClientsController@getClients');
+
+
 });
 
 //Login Route
 Route::post('login','Auth\LoginController@login');
+
+//Ruta para registrar un nuevo usuario en la tabla users
+Route::post('users/register', 'UserController@register');
